@@ -8,4 +8,6 @@ public interface IAuthRepository
     Task<UserDto> GetUserByLoginAsync(string login);
     Task<UserDto> CreateUserAsync(RegisterDto registerDto);
     Task<bool> UserExistsAsync(string login, string email);
+    Task<bool> ValidateCredentialsAsync(string login, string password);
+    Task<UserDto> GetUserByIdAsync(int id);
 }

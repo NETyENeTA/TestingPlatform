@@ -57,7 +57,7 @@ public class AuthController : ControllerBase
 
             // Генерируем токен
             var token = _jwtService.GenerateToken(user);
-            var expires = DateTime.UtcNow.AddMinutes(60); // Должно совпадать с настройками JWT
+            var expires = DateTime.UtcNow.AddMinutes(60);
 
             _logger.LogInformation("User {Login} successfully logged in", loginDto.Login);
 
@@ -136,7 +136,11 @@ public class AuthController : ControllerBase
 
     private int? GetCurrentUserId()
     {
-        var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == "nameid" || c.Type == ClaimTypes.NameIdentifier);
+        var userIdClaim = User.Claims.FirstOrDefault(c =>
+            c.Type == ClaimTypes.NameIdentifier ||
+            c.Type == "nameid" ||
+            c.Type == "sub");
+
         if (userIdClaim != null && int.TryParse(userIdClaim.Value, out int userId))
         {
             return userId;
