@@ -3,15 +3,10 @@ using TestingPlatform.Domain.Enums;
 
 namespace TestingPlatform.Application.Dtos;
 
-public class UserDto
+public class UpdateUserDto
 {
-    public int Id { get; set; }
-    public string Login { get; set; }
     public string Email { get; set; }
     public string FirstName { get; set; }
     public string MiddleName { get; set; }
     public string LastName { get; set; }
-    public UserRole Role { get; set; }
-    public DateTimeOffset CreatedAt { get; set; }
-    public StudentDto Student { get; set; }
 }

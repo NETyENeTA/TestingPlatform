@@ -10,4 +10,9 @@ public class StudentDto
     public string LastName { get; set; }
     public string Phone { get; set; }
     public string VkProfileLink { get; set; }
+    public int UserId { get; set; }
+    public UserDto User { get; set; }
+    public List<GroupDto> Groups { get; set; } = new();
+    public List<TestDto> Tests { get; set; } = new();
+
 }
